@@ -13,7 +13,7 @@ pipeline {
     environment {
         POM_VERSION = getVersion()
         JAR_NAME = getJarName()
-        AWS_ECR_REGION = 'eu-west-1'
+        AWS_ECR_REGION = 'ap-south-1'
         AWS_ECS_SERVICE = 'ch-dev-user-api-service'
         AWS_ECS_TASK_DEFINITION = 'ch-dev-user-api-taskdefinition'
         AWS_ECS_COMPATIBILITY = 'FARGATE'
@@ -35,7 +35,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
+                withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: '453304093030.dkr.ecr.ap-south-1.amazonaws.com/java-project')]) {
                     script {
                         docker.build("${AWS_ECR_URL}:${POM_VERSION}", "--build-arg JAR_FILE=${JAR_NAME} .")
                     }
