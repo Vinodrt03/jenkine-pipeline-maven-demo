@@ -11,6 +11,11 @@ pipeline {
     }
     
     environment {
+        AWS_ACCOUNT_ID="453304093030"
+        AWS_DEFAULT_REGION="ap-south-1" 
+        IMAGE_REPO_NAME="java-project"
+        IMAGE_TAG="JavaOps-1"
+        REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
         POM_VERSION = getVersion()
         JAR_NAME = getJarName()
         AWS_ECR_REGION = 'ap-south-1'
