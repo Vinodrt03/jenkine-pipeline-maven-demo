@@ -10,9 +10,7 @@ pipeline {
         timestamps()
 }
     
-  tools {
-          'maven-3.6.3', type: 'maven'   
-}
+  tool name: 'maven-3.6.3', type: 'maven'
 
   environment {
         POM_VERSION = getVersion()
