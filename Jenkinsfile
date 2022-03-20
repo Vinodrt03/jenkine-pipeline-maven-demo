@@ -9,8 +9,10 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
         timestamps()
 }
-    
-  tool name: 'maven-3.6.3', type: 'maven'
+    tools { 
+        maven 'Maven 3.6.3' 
+        jdk 'jdk11' 
+    }
 
   environment {
         POM_VERSION = getVersion()
