@@ -25,8 +25,11 @@ pipeline {
 }
     stages {  
       stage('Build & Test') {
-          steps { sh "mvn -B -U clean package"}
+          steps { 
+              sh "mvn -B -U clean package"
       }
-    }   
-}        
+    }
+    }
+}   
+    
         
