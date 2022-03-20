@@ -11,7 +11,7 @@ pipeline {
 }
     
   tools {
-        tool name: 'maven-3.6.3', type: 'maven'    
+        name = maven-3.6.3', type: 'maven'    
 }
 
   environment {
