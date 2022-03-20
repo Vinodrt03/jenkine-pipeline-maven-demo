@@ -23,13 +23,13 @@ pipeline {
         AWS_ECS_CLUSTER = 'ch-dev'
         AWS_ECS_TASK_DEFINITION_PATH = './ecs/container-definition-update-image.json'
 }
-    stages {  
+   stages {  
       stage('Build & Test') {
-          steps { 
-              sh "mvn -B -U clean package"
-      }
+      steps {
+    withMaven(options: [artifactsPublisher(), mavenLinkerPublisher(), dependenciesFingerprintPublisher(disabled: true), jacocoPublisher(disabled: true), junitPublisher(disabled: true)]) {
+      sh "mvn -B -U clean package"
     }
-    }
-}   
+  }
+}
     
         
