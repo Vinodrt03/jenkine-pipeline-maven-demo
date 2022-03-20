@@ -9,8 +9,9 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
         timestamps()
 }
-    tools { 
-        withMaven( maven: 'maven-3.6.3' )
+    tools {
+        maven "MAVEN"
+        jdk "JDK"
     }
 
   environment {
