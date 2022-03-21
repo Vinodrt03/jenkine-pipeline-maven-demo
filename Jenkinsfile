@@ -9,10 +9,7 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
         timestamps()
 }
-    tools {
-        maven "MAVEN"
-        jdk "JDK"
-    }
+ 
 
   environment {
         POM_VERSION = getVersion()
