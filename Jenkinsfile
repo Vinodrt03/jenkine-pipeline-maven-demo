@@ -9,9 +9,11 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
         timestamps()
 }
-    tools {
-        maven 'Maven_3.6.3' 
-    }
+   tools {
+        jdk 'openjdk-11'
+        maven 'maven 3.6.3'
+        dockerTool 'docker-latest'
+}
 
   environment {
         POM_VERSION = getVersion()
@@ -26,6 +28,7 @@ pipeline {
         AWS_ECS_CLUSTER = 'ch-dev'
         AWS_ECS_TASK_DEFINITION_PATH = './ecs/container-definition-update-image.json'
   }
+    
     stages {  
       stage('Build & Test') {
       steps {
