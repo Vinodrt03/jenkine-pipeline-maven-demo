@@ -9,8 +9,8 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
         timestamps()
 }
- 
-    stage('Compile stage') {
+    stages {
+        stage('Compile stage') {
                 steps {
                     maven(maven : 'Maven_3.6.3'){
                         sh "mvn clean compile"
