@@ -9,14 +9,9 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
         timestamps()
 }
-    stages {
-        stage('Compile stage') {
-                steps {
-                    maven(maven : 'Maven_3.6.3'){
-                        sh "mvn clean compile"
-                }
-            }
-        }
+    tools {
+        maven 'Maven_3.5.2' 
+    }
 
   environment {
         POM_VERSION = getVersion()
@@ -40,5 +35,4 @@ pipeline {
    }
   }
  }
-}
 }
