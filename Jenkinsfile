@@ -10,6 +10,13 @@ pipeline {
         timestamps()
 }
  
+    stage('Compile stage') {
+                steps {
+                    maven(maven : 'Maven_3.6.3'){
+                        bat "mvn clean compile"
+                }
+            }
+        }
 
   environment {
         POM_VERSION = getVersion()
