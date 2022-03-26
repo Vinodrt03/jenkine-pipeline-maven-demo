@@ -21,7 +21,7 @@ options {
        stage('Build Docker Image') {
          steps {
              script {
-        docker.build("--build-arg JAR_FILE=${JAR_NAME} .")
+                docker.build
              }
          }
        }
