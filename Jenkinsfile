@@ -21,7 +21,7 @@ options {
        stage('Build Docker Image') {
          steps {
              script {
-        docker.build("${AWS_ECR_URL}:${POM_VERSION}", "--build-arg JAR_FILE=${JAR_NAME} .")
+        docker.build("${POM_VERSION}", "--build-arg JAR_FILE=${JAR_NAME} .")
              }
          }
        }
