@@ -14,7 +14,7 @@ pipeline {
     
       stage('Build Docker Image') {
         steps {
-          withCredentials([string(credentialsId: '453304093030.dkr.ecr.ap-south-1.amazonaws.com/java-project', variable: '453304093030.dkr.ecr.ap-south-1.amazonaws.com/java-projectL')]) {
+          withCredentials([string(credentialsId: '453304093030.dkr.ecr.ap-south-1.amazonaws.com/java-project', variable: 'AWS_ECR_URL')]) {
            script {
             docker.build("${AWS_ECR_URL}:${POM_VERSION}", "--build-arg JAR_FILE=${JAR_NAME} .")
       }
