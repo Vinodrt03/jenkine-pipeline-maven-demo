@@ -21,7 +21,7 @@ options {
        stage('Build Docker Image') {
          steps {
              script {
-                docker.build
+                dockerImage = docker.build imagename
              }
          }
        }
