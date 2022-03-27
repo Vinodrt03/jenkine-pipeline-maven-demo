@@ -33,7 +33,7 @@ options {
         }
      stage('Build Docker Image') {
         steps {
-        withCredentials([<object of type com.cloudbees.jenkins.plugins.awscredentials.AmazonWebServicesCredentialsBinding>]) {
+       withCredentials([string(credentialsId: 'AmazonWebServicesCredentialsBindingT', variable: 'AWS_ECR_URL')]) {
     // some block
           script {
            docker.build("${AWS_ECR_URL}:${POM_VERSION}", "--build-arg JAR_FILE=${JAR_NAME} .")
