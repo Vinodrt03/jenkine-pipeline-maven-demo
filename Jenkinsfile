@@ -11,7 +11,7 @@ options {
 }
  
  tools {
-        jdk 'openjdk-11'
+        jdk 'openjdk-9'
         maven 'maven 3.6.3'
         dockerTool 'docker-latest'
 }
