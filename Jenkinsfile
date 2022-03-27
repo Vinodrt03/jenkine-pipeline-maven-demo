@@ -9,12 +9,6 @@ options {
         timeout(time: 1, unit: 'HOURS')
         timestamps()
 }
- 
- tools {
-        jdk 'openjdk-9'
-        maven 'maven 3.6.3'
-        dockerTool 'docker-latest'
-}
     
  environment {
         POM_VERSION = getVersion()
