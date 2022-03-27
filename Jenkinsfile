@@ -20,7 +20,7 @@ options {
         }
      stage('Build Docker Image') {
         steps {
-       withCredentials([string(credentialsId: 'AmazonWebServicesCredentialsBindingT', variable: 'AWS_ECR_URL')]) {
+       withCredentials([string(credentialsId: 'AmazonWebServicesCredentialsBinding', variable: 'AWS_ECR_URL')]) {
     // some block
           script {
            docker.build("${AWS_ECR_URL}:${POM_VERSION}", "--build-arg JAR_FILE=${JAR_NAME} .")
