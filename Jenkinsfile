@@ -8,8 +8,11 @@ pipeline {
         timestamps()
     }
     environment {
-      DOCKER_TAG = "getVersion()"
-      AWS_ECR_URL = "453304093030.dkr.ecr.ap-south-1.amazonaws.com/java-project"  
+        AWS_ACCOUNT_ID="453304093030"
+        AWS_DEFAULT_REGION="ap-south-1"
+        IMAGE_REPO_NAME="java-project"
+        IMAGE_TAG="v1"
+        REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
     }
 
     tools {
@@ -26,14 +29,12 @@ pipeline {
           }
         }
         
-    stage('Build Docker Image') {
-        steps {
-           sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 453304093030.dkr.ecr.ap-south-1.amazonaws.com' , variable: 'AWS_ECR_URL')]) {
+       stage('Build Docker Image') {
+          steps {
               script {
-                docker.build("${AWS_ECR_URL}:${POM_VERSION}", "--build-arg JAR_FILE=${JAR_NAME} .")
+                dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
               }
-           }
-        }
-    }
+          }
+       }
      }
 }
