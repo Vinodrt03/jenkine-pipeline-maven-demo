@@ -11,7 +11,7 @@ pipeline {
         AWS_ACCOUNT_ID="453304093030"
         AWS_DEFAULT_REGION="ap-south-1"
         IMAGE_REPO_NAME="java-project"
-        IMAGE_TAG="v1"
+        IMAGE_TAG= sh(returnStdout: true, script: "git rev-parse --short=10 HEAD").trim()`
         REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
     }
 
