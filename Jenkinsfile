@@ -28,7 +28,7 @@ pipeline {
         
     stage('Build Docker Image') {
         steps {
-            variable: 'AWS_ECR_URL')]) {
+           sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 453304093030.dkr.ecr.ap-south-1.amazonaws.com' , variable: 'AWS_ECR_URL')]) {
               script {
                 docker.build("${AWS_ECR_URL}:${POM_VERSION}", "--build-arg JAR_FILE=${JAR_NAME} .")
               }
