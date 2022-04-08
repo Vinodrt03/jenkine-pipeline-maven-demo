@@ -11,7 +11,6 @@ pipeline {
         AWS_ACCOUNT_ID="453304093030"
         AWS_DEFAULT_REGION="ap-south-1"
         IMAGE_REPO_NAME="java-project"
-        IMAGE_TAG= "v1"
         REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
     }
 
@@ -32,7 +31,7 @@ pipeline {
        stage('Build Docker Image') {
           steps {
               script {
-                dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+                dockerImage = docker.build "${IMAGE_REPO_NAME}"
               }
           }
        }
@@ -40,8 +39,8 @@ pipeline {
          steps{  
              script {
                 sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 453304093030.dkr.ecr.ap-south-1.amazonaws.com' 
-                sh "docker tag ${IMAGE_REPO_NAME}:${IMAGE_TAG} ${REPOSITORY_URI}:$IMAGE_TAG"
-                sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+                sh "docker tag ${IMAGE_REPO_NAME}:${IMAGE_TAG} ${REPOSITORY_URI}"
+                sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
              }
          }
        }
