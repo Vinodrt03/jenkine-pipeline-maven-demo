@@ -28,7 +28,7 @@ pipeline {
         
     stage('Build Docker Image') {
         steps {
-           withDockerRegistry(credentialsId: 'ecr:ap-south-1:9e26ba45-09a9-4dab-a730-7827a49086b0', url: '453304093030.dkr.ecr.ap-south-1.amazonaws.com/java-project') {
+           withCredentials([object of type com.cloudbees.jenkins.plugins.awscredentials.AmazonWebServicesCredentialsBinding) , variable: 'AWS_ECR_URL')]) {
               script {
                 docker.build("${AWS_ECR_URL}:${POM_VERSION}", "--build-arg JAR_FILE=${JAR_NAME} .")
               }
