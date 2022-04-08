@@ -20,7 +20,7 @@ pipeline {
         AWS_ECS_CLUSTER = 'ch-dev'
         AWS_ECS_TASK_DEFINITION_PATH = './ecs/container-definition-update-image.json'
      }
-    }
+    
     tools {
         maven 'maven'
         dockerTool 'docker'
