@@ -33,8 +33,7 @@ pipeline {
      stage('Push Image to ECR') {
         steps {
             sh aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 453304093030.dkr.ecr.ap-south-1.amazonaws.com
-            sh docker push 453304093030.dkr.ecr.ap-south-1.amazonaws.com/maven-jar-plugin:3.0.2
+            sh docker push https://453304093030.dkr.ecr.ap-south-1.amazonaws.com/maven-jar-plugin:3.0.2
         }
      }
      }
-}
