@@ -7,7 +7,10 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
         timestamps()
     }
-    
+    environment {
+      DOCKER_TAG = "getVersion()" 
+    }
+
     tools {
         maven 'maven'
         dockerTool 'docker'
@@ -22,4 +25,10 @@ pipeline {
           }
         }
      }
+    stage('Build Docker Image') {
+       steps {
+           sh "docker build . -t ${DOCKER_TAG} "
+       }
+    }
+}
 }
