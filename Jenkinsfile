@@ -10,6 +10,7 @@ pipeline {
     environment {
       DOCKER_TAG = "getVersion()"
       AWS_ECR_URL = "453304093030.dkr.ecr.ap-south-1.amazonaws.com/java-project"  
+      AWS_REPOSITORY_URL_SECRET = "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 453304093030.dkr.ecr.ap-south-1.amazonaws.com"
     }
 
     tools {
