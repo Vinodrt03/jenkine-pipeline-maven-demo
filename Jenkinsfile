@@ -33,8 +33,10 @@ pipeline {
           steps {
               script {
                 dockerImage = docker.build "${POM_VERSION}:${JAR_NAME}"
+              }
           }
-       }
+      }
      }
 }
+        
                      
