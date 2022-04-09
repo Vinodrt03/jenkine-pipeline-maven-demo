@@ -9,7 +9,9 @@ pipeline {
     }
     environment {
          AWS_ECR_URL = "453304093030.dkr.ecr.ap-south-1.amazonaws.com/java-project"
+         AWS_ACCOUNT_ID="453304093030"
     }
+    
 
     tools {
         maven 'maven'
@@ -27,7 +29,7 @@ pipeline {
         
        stage('Build Docker Image') {
           steps {
-              withAWS(roleAccount:'AWS_REPOSITORY_URL_SECRET' , variable: 'AWS_ECR_URL')]) {
+              withAWS(roleAccount:'$AWS_REPOSITORY_URL_SECRET', role:'AWS_REPOSITORY_URL_SECRET', variable: '$AWS_ECR_URL')]) {
                  script {
                     docker.build("${AWS_ECR_URL}:${POM_VERSION}", "--build-arg JAR_FILE=${JAR_NAME} .")
                  }
