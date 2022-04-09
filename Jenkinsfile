@@ -29,9 +29,10 @@ pipeline {
           }
         }
         
-       stage('Build Docker Image') {
+      stage('Build Docker Image') {
           steps {
-              sh docker build .
+              script {
+                dockerImage = docker.build "${POM_VERSION}:${JAR_NAME}"
           }
        }
      }
