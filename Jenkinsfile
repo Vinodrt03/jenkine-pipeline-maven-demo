@@ -10,8 +10,8 @@ pipeline {
     environment {
          AWS_ECR_URL = "453304093030.dkr.ecr.ap-south-1.amazonaws.com/java-project"
          AWS_ACCOUNT_ID="453304093030"
-         POM_VERSION = "getVersion"
-         JAR_NAME = "getJarName"
+         POM_VERSION = "getVersion()"
+         JAR_NAME = "getJarName()"
     }
     
 
