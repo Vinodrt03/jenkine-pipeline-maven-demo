@@ -31,7 +31,7 @@ pipeline {
         
        stage('Build Docker Image') {
           steps {
-               docker.build("${AWS_ECR_URL}:${POM_VERSION}", "--build-arg JAR_FILE=${JAR_NAME} .")
+              sh docker.build("${AWS_ECR_URL}:${POM_VERSION}", "--build-arg JAR_FILE=${JAR_NAME} .")
           }
        }
      }
