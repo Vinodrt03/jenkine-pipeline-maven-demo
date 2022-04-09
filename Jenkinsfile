@@ -32,11 +32,11 @@ pipeline {
       stage('Build Docker Image') {
           steps {
               script {
-                dockerImage = docker.build "${POM_VERSION}:${JAR_NAME}"
+                 dockerImage = docker.build "${POM_VERSION}:${JAR_NAME}"
               }
           }
       }
      }
 }
-        
+              
                      
